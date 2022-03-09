@@ -22,7 +22,7 @@
     "react-is": "17.0.2"
   },
   "devDependencies": {
-    "concurrently": "6.5.1",
+    "concurrently": "7.0.0",
     "playwright": "1.17.1"
   }
 }
