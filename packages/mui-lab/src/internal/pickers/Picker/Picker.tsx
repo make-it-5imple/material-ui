@@ -38,6 +38,7 @@ export interface ExportedPickerProps<View extends AllAvailableViews>
 
 export interface PickerProps<View extends AllAvailableViews> extends ExportedPickerProps<View> {
   autoFocus?: boolean;
+  disableOpenNext?: boolean;
   date: any;
   DateInputProps: DateInputPropsLike;
   isMobileKeyboardViewOpen: boolean;
@@ -79,6 +80,7 @@ function Picker<View extends AllAvailableViews>(props: PickerProps<View>) {
     onDateChange,
     onViewChange,
     openTo,
+    disableOpenNext,
     orientation,
     showToolbar,
     toggleMobileKeyboardView,
@@ -118,6 +120,7 @@ function Picker<View extends AllAvailableViews>(props: PickerProps<View>) {
     view: undefined,
     views,
     openTo,
+    disableOpenNext,
     onChange: handleDateChange,
     onViewChange: handleViewChange,
   });

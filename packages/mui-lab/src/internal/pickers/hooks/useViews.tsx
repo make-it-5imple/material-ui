@@ -12,6 +12,7 @@ export type PickerOnChangeFn<TDate> = (
 interface UseViewsOptions<TDate, View extends AllAvailableViews> {
   onChange: PickerOnChangeFn<TDate>;
   onViewChange?: (newView: View) => void;
+  disableOpenNext?: boolean;
   openTo?: View;
   view: View | undefined;
   views: readonly View[];
@@ -20,6 +21,7 @@ interface UseViewsOptions<TDate, View extends AllAvailableViews> {
 export function useViews<TDate, View extends AllAvailableViews>({
   onChange,
   onViewChange,
+  disableOpenNext,
   openTo,
   view,
   views,
@@ -60,11 +62,11 @@ export function useViews<TDate, View extends AllAvailableViews>({
           : currentViewSelectionState;
 
       onChange(date, globalSelectionState);
-      if (isSelectionFinishedOnCurrentView) {
+      if (isSelectionFinishedOnCurrentView && !disableOpenNext) {
         openNext();
       }
     },
-    [nextView, onChange, openNext],
+    [nextView, disableOpenNext, onChange, openNext],
   );
 
   return {
